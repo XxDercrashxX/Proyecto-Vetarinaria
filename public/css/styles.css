@@ -1,0 +1,500 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+.page-center {
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: center;  
+    justify-items: center; 
+    gap: 2.5rem;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+.profile {
+    position: absolute; 
+    top: 90px; 
+    right: 5%;
+    display: none; 
+    width: 320px;
+    background-color: #2a3e47; 
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 1000; 
+}
+
+.profile.active {
+    display: block; 
+}
+
+.profile h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem 1rem 0.5rem 1rem;
+    border-bottom: 1px solid #4a5c67;
+}
+
+.profile-header {
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid #4a5c67;
+}
+
+.profile-avatar {
+    background-color: #1a1a1a;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin: 0 auto 0.5rem auto;
+}
+
+.profile-header strong {
+    display: block;
+    font-size: 1.1rem;
+}
+
+.profile-header p {
+    font-size: 0.9rem !important; 
+    color: #c0c0c0 !important; 
+    font-weight: normal !important;
+}
+
+.profile-body {
+    padding: 1rem;
+}
+
+.profile-body label {
+    font-weight: bold;
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.info-box {
+    background-color: #4f5d67;
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    color: white;
+}
+
+.profile-footer {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid #4a5c67;
+}
+
+.profile-footer a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.profile-footer a:hover {
+    text-decoration: underline;
+}
+
+.register-container {
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+}
+
+.register-container h2 {
+    text-align: center;
+    color: #004a6e;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group .icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #e0e0e0;
+    font-size: 1.1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+width: 100%;
+    padding: 1rem;
+    padding-right: 3rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #b0b3b8;
+    color: white;
+    font-size: 1rem;
+}
+
+input::placeholder {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 74, 110, 0.5);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancel {
+    background-color: #d9534f;
+}
+
+.btn-cancel:hover {
+    background-color: #c9302c;
+}
+
+.btn-submit {
+    background-color: #5cb85c;
+}
+
+.btn-submit:hover {
+    background-color: #449d44;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.main-header {
+    background-color: #005f73;
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo img {
+    height: 100px;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+    margin-right: 3rem;
+}
+
+.nav-links a:hover {
+    color: #a5d6a7;
+}
+
+.nav-links .link-active {
+    color: #a5d6a7;
+}
+
+.nav-profile {
+    background-color: #1a1a1a;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 3rem;
+}
+
+.sidebar {
+    flex-basis: 35%;
+}
+
+.sidebar-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #5ea535;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    transform: rotate(-10deg);
+    text-align: center;
+}
+
+.sidebar-image {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.main-content {
+    flex-basis: 65%;
+}
+
+.main-content h1 {
+    font-size: 1.8rem;
+    color: #5ea535;
+    margin-top: 0;
+}
+
+.main-content h2 {
+    font-size: 1.4rem;
+    color: #5ea535;
+    margin-top: 2rem;
+}
+
+.main-content p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #333;
+    font-weight: normal;
+}
+
+.login-logo-container {
+    text-align: center; 
+}
+
+.login-logo-container img {
+    width: 200px; 
+    height: auto;
+}
+
+.patient-panel {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    
+}
+
+.patient-panel h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.patient-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-create {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-create:hover {
+    background-color: #e0e0e0;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+}
+
+.search-bar i {
+    color: #6c757d;
+    margin-right: 0.5rem;
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    outline: none;
+    color: #333;
+    font-size: 1rem;
+}
+
+.search-bar input::placeholder {
+    color: #6c757d;
+}
+
+.table-container {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.table-container h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+table.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.patient-table th,
+table.patient-table td {
+    padding: 0.9rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table.patient-table th {
+    background-color: #2a3e47;
+    color: white;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+table.patient-table td {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+table.patient-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; 
+}
+
+.btn-action {
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    text-decoration: none;
+    margin-right: 0.25rem;
+    color: white;
+}
+
+.btn-details {
+    background-color: #6c757d;
+}
+
+.btn-edit {
+    background-color: #489a9d;
+}
+
+.btn-delete {
+    background-color: #b94a48;
+}
+
+.main-footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+
+    .patient-panel {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .patient-panel h2 {
+        text-align: center;
+    }
+
+    .patient-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-bar {
+        justify-content: center;
+    }
+
+    .table-container {
+        overflow-x: auto; 
+    }
+
+    table.patient-table {
+        min-width: 700px; 
+    }
+
+    table.patient-table td:last-child {
+        white-space: nowrap; 
+    }
+
+    .profile {
+        right: 10px;
+        width: 300px;
+    }
+}
