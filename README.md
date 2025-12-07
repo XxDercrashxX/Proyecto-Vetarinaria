@@ -39,22 +39,13 @@ Cada usuario puede ver un historial detallado de sus transacciones anteriores.
  
 ## 📸 Capturas
 
+
 <img src="https://github.com/user-attachments/assets/480dc6e2-666d-4e71-9224-df922a4ba7b5" alt="LOGIN 23_05_2025" width="400" height="500"/>
-
-<img width="1009" height="816" alt="Captura de Pantalla 2025-12-07 a la(s) 2 12 08 p m" src="https://github.com/user-attachments/assets/e8a6cdfa-640b-43f5-adaf-9c326643f47e" />
-
-<img width="1440" height="813" alt="Panel de inicio" src="https://github.com/user-attachments/assets/d4c7143f-9e7b-4149-b718-88c0b6a2d6ab" />
-
-<img width="1440" height="811" alt="Captura de Pantalla 2025-12-06 a la(s) 1 19 03 p m" src="https://github.com/user-attachments/assets/13f6a3a4-3624-4585-a37e-2e84d2f42aa0" />
-<img width="1440" height="816" alt="Captura de Pantalla 2025-12-06 a la(s) 1 19 18 p m" src="https://github.com/user-attachments/assets/b5127633-64d9-40bd-874c-d92e77d3e853" />
-<img width="1440" height="816" alt="Captura de Pantalla 2025-12-06 a la(s) 1 19 18 p m" src="https://github.com/user-attachments/assets/237aebbe-0c41-468f-b306-2a3795ae6287" />
-<img width="1439" height="815" alt="Captura de Pantalla 2025-12-06 a la(s) 1 19 31 p m" src="https://github.com/user-attachments/assets/7987d0a3-0e43-4ecf-ab94-c5a809cc2cae" />
-
-
-<img src="file:///Users/franciscomiguelnavarrocrespo/Desktop/Panel%20de%20inicio.png" alt="Panel Administrador 23_05_2025" width="400">
-
-
-
+<img alt="Registro 2025-12-07 " src="https://github.com/user-attachments/assets/e8a6cdfa-640b-43f5-adaf-9c326643f47e" width="439" height="500" />
+<img alt="Inicio 2025-12-06 " src="https://github.com/user-attachments/assets/13f6a3a4-3624-4585-a37e-2e84d2f42aa0" width="439" height="500" />
+<img alt="Pacientes 2025-12-06 " src="https://github.com/user-attachments/assets/b5127633-64d9-40bd-874c-d92e77d3e853" width="439" height="500"/>
+<img alt="Dueños 2025-12-06 " src="https://github.com/user-attachments/assets/237aebbe-0c41-468f-b306-2a3795ae6287" width="439" height="500"/>
+<img alt="Citas 2025-12-06 " src="https://github.com/user-attachments/assets/7987d0a3-0e43-4ecf-ab94-c5a809cc2cae" width="439" height="500" />
 
 
 ##
