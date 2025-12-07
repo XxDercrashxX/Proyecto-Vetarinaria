@@ -54,16 +54,15 @@ Cada usuario puede ver un historial detallado de sus transacciones anteriores.
 <img src="file:///Users/franciscomiguelnavarrocrespo/Desktop/Panel%20de%20inicio.png" alt="Panel Administrador 23_05_2025" width="400">
 
 
-<img src="" alt="Panel Cliente 23_05_2025 02_44_06 a  m" width="400">
-
-
 
 
 
 ##
 ## Logo
 
-![Renta de Peliculas y Juegos (1) 3](mmm)
+<img alt="VETEICA Clinic" src="https://github.com/user-attachments/assets/920f725e-4dc8-43e3-ade9-d08f288cbb63" width="150" height="108" />
+
+
 
 ## 🚀 Tecnologías Utilizadas
 - **PostgreSQL**
