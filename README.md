@@ -58,7 +58,7 @@ Cada usuario puede ver un historial detallado de sus transacciones anteriores.
 ## 🚀 Tecnologías Utilizadas
 - **PostgreSQL**
 - **JavaScript**
-- **Python**
+- **Css**
 - **HTML** (interfaz gráfica)
 - **MySQL** (base de datos)
 - **IText Core** (Creacion del pdf)
@@ -68,9 +68,9 @@ Cada usuario puede ver un historial detallado de sus transacciones anteriores.
 ## ⚙️ Instalación y Ejecución
 
 Para iniciar login de administrador
- - Descargar el .JAR
- - correo de administrador: admin 
- - Contraseña: admin123
+ - URL
+ - correo de administrador: fran@gmail.com
+ - Contraseña: 123 
 
 ##
 ## 🗂️ Estructura del Proyecto
@@ -93,9 +93,6 @@ Para iniciar login de administrador
 
 ┃ ┣ 📁 views/
 
-#### Clase de conexión a base de datos
-
-┃ ┣ 📄 
 
 #### Punto de entrada principal
 ┃ ┗ 📄 AuthController.php
