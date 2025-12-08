@@ -59,6 +59,7 @@ Cada usuario puede ver un historial detallado de sus transacciones anteriores.
 - **PostgreSQL**
 - **JavaScript**
 - **Css**
+- **PHP**
 - **HTML** (interfaz gráfica)
 - **MySQL** (base de datos)
 - **IText Core** (Creacion del pdf)
