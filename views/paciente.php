@@ -149,40 +149,41 @@ if ($_POST && isset($_POST['eliminar_id'])) {
 
     <footer class="main-footer">© 2025 Veterinaria Amor y lealtad</footer>
 
-    <script>
-      const profileIcon = document.querySelector(".nav-profile");
-      const profileCard = document.querySelector(".profile");
+<script>
+    const profileIcon = document.querySelector(".nav-profile");
+    const profileCard = document.querySelector(".profile");
 
-      profileIcon.addEventListener("click", (e) => {
+    profileIcon.addEventListener("click", (e) => {
         e.stopPropagation();
         profileCard.classList.toggle("active");
-      });
+    });
 
-      window.addEventListener("click", (e) => {
+    window.addEventListener("click", (e) => {
         if (!profileCard.contains(e.target)) {
-          profileCard.classList.remove("active");
+            profileCard.classList.remove("active");
         }
-      });
+    });
 
-      // Búsqueda en tiempo real
-      document.getElementById('search-input').addEventListener('input', function() {
+    document.getElementById('search-input').addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
         const rows = document.querySelectorAll('#tabla-pacientes-body tr');
         
-        rows.forEach(row => {
-          const id = row.cells[0].textContent.toLowerCase();
-          const nombre = row.cells[1].textContent.toLowerCase();
-          const especie = row.cells[2].textContent.toLowerCase();
-          const dueno = row.cells[3].textContent.toLowerCase();
-          
-          if (id.includes(searchTerm) || nombre.includes(searchTerm) || 
-              especie.includes(searchTerm) || dueno.includes(searchTerm)) {
-            row.style.display = '';
-          } else {
-            row.style.display = 'none';
-          }
+        rows.forEach(row => {            if (row.cells.length > 1) {
+                const id = row.cells[0].textContent.toLowerCase();
+                const nombre = row.cells[1].textContent.toLowerCase();
+                const especie = row.cells[2].textContent.toLowerCase();
+
+                const dueno = row.cells[3].textContent.toLowerCase();
+                
+                if (id.includes(searchTerm) || nombre.includes(searchTerm) || 
+                    especie.includes(searchTerm) || dueno.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
         });
-      });
-    </script>
+    });
+</script>
   </body>
 </html>

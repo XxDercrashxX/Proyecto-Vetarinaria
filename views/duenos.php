@@ -175,22 +175,24 @@ if ($_POST && isset($_POST['eliminar_id'])) {
         }
     });
 
-    // Búsqueda en tiempo real
     document.getElementById('search-input').addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
         const rows = document.querySelectorAll('#tabla-duenos-body tr');
         
         rows.forEach(row => {
-            const id = row.cells[0].textContent.toLowerCase();
-            const nombre = row.cells[1].textContent.toLowerCase();
-            const telefono = row.cells[2].textContent.toLowerCase();
-            const email = row.cells[3].textContent.toLowerCase();
-            
-            if (id.includes(searchTerm) || nombre.includes(searchTerm) || 
-                telefono.includes(searchTerm) || email.includes(searchTerm)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
+
+            if (row.cells.length > 1) {
+                const id = row.cells[0].textContent.toLowerCase();
+                const nombre = row.cells[1].textContent.toLowerCase();
+                const telefono = row.cells[2].textContent.toLowerCase();
+                const email = row.cells[3].textContent.toLowerCase();
+                
+                if (id.includes(searchTerm) || nombre.includes(searchTerm) || 
+                    telefono.includes(searchTerm) || email.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
             }
         });
     });

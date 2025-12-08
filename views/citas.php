@@ -164,24 +164,26 @@ if ($_POST && isset($_POST['eliminar_id'])) {
         }
     });
 
-    // Búsqueda en tiempo real
     document.getElementById('search-input').addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
         const rows = document.querySelectorAll('#tabla-citas-body tr');
         
         rows.forEach(row => {
-            const id = row.cells[0].textContent.toLowerCase();
-            const fecha = row.cells[1].textContent.toLowerCase();
-            const hora = row.cells[2].textContent.toLowerCase();
-            const paciente = row.cells[3].textContent.toLowerCase();
-            const dueno = row.cells[4].textContent.toLowerCase();
-            
-            if (id.includes(searchTerm) || fecha.includes(searchTerm) || 
-                hora.includes(searchTerm) || paciente.includes(searchTerm) || 
-                dueno.includes(searchTerm)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
+
+            if (row.cells.length > 1) {
+                const id = row.cells[0].textContent.toLowerCase();
+                const fecha = row.cells[1].textContent.toLowerCase();
+                const hora = row.cells[2].textContent.toLowerCase();
+                const paciente = row.cells[3].textContent.toLowerCase();
+                const dueno = row.cells[4].textContent.toLowerCase();
+                
+                if (id.includes(searchTerm) || fecha.includes(searchTerm) || 
+                    hora.includes(searchTerm) || paciente.includes(searchTerm) || 
+                    dueno.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
             }
         });
     });
