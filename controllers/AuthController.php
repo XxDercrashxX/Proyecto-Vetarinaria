@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once '../config/database.php';
 include_once '../models/User.php';
 
@@ -14,12 +16,12 @@ if($_POST['action'] == 'register') {
     $user->password = $_POST['password'];
     
     if($user->emailExists()) {
-        echo "<script>alert('El email ya está registrado'); window.location.href='./views/registro.php';</script>";
+        echo "<script>alert('El email ya está registrado'); window.location.href='../views/registro.php';</script>";
     } else {
         if($user->register()) {
             echo "<script>alert('Registro exitoso'); window.location.href='/index.php';</script>";
         } else {
-            echo "<script>alert('Error en el registro'); window.location.href='./views/registro.php';</script>";
+            echo "<script>alert('Error en el registro'); window.location.href='../views/registro.php';</script>";
         }
     }
     exit();
@@ -33,7 +35,8 @@ if($_POST['action'] == 'login') {
         $_SESSION['user_id'] = $user->id;
         $_SESSION['user_nombre'] = $user->nombre;
         $_SESSION['user_email'] = $user->email;
-        header("Location: ../views/inicio.html");
+        header("Location: ../views/inicio.php");
+        exit();
     } else {
         echo "<script>alert('Credenciales incorrectas'); window.location.href='/index.php';</script>";
     }
