@@ -54,16 +54,37 @@
 </div>
 
 <script>
-// PASAR VALORES A LOS INPUTS REALES ANTES DE ENVIAR
+    // PASAR VALORES A LOS INPUTS REALES ANTES DE ENVIAR
 document.getElementById("formRegistro").addEventListener("submit", function(event) {
     let nombre = document.getElementById("nombre_fake").value.trim();
     let apellido = document.getElementById("apellido_fake").value.trim();
     let email = document.getElementById("email_fake").value.trim();
     let password = document.getElementById("password_fake").value.trim();
 
+    const textoRegex = /^[a-zA-ZÁÉÍÓÚáéíóúñÑ\s]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!nombre || !apellido || !email || !password) {
         event.preventDefault();
         alert("Por favor, llena todos los campos.");
+        return;
+    }
+
+    if (!textoRegex.test(nombre)) {
+        event.preventDefault();
+        alert("El nombre solo debe contener letras.");
+        return;
+    }
+
+    if (!textoRegex.test(apellido)) {
+        event.preventDefault();
+        alert("El apellido solo debe contener letras.");
+        return;
+    }
+
+    if (!emailRegex.test(email)) {
+        event.preventDefault();
+        alert("Por favor, ingresa un correo electrónico válido.");
         return;
     }
 

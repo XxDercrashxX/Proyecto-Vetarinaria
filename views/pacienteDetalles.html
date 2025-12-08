@@ -9,6 +9,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
     <link rel="stylesheet" href="../public/css/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   </head>
   <body>
     <header class="main-header">
@@ -51,76 +52,80 @@
 
     <main class="container">
       <div class="details-container">
-        <h1>Detalle de Mascota: <span id="pet-name-display">Mascota</span></h1>
+        
+        <div id="contenido-pdf">
+            <h1>Detalle de Mascota: <span id="pet-name-display">Mascota</span></h1>
 
-        <img
-          src="../public/css/img/perroInicio.png"
-          alt="Foto de la mascota"
-          class="pet-detail-image"
-        />
+            <img
+              src="../public/css/img/perroInicio.png"
+              alt="Foto de la mascota"
+              class="pet-detail-image"
+              style="display: block; margin: 0 auto; max-width: 200px;"
+            />
 
-        <table class="details-table">
-          <tr>
-            <th>Especie</th>
-            <td>Perro</td>
-          </tr>
-          <tr>
-            <th>Raza</th>
-            <td>Jack rusell terryer</td>
-          </tr>
-          <tr>
-            <th>Edad</th>
-            <td>4 meses</td>
-          </tr>
-          <tr>
-            <th>Sexo</th>
-            <td>Macho</td>
-          </tr>
-        </table>
+            <table class="details-table">
+              <tr>
+                <th>Especie</th>
+                <td>Perro</td>
+              </tr>
+              <tr>
+                <th>Raza</th>
+                <td>Jack rusell terryer</td>
+              </tr>
+              <tr>
+                <th>Edad</th>
+                <td>4 meses</td>
+              </tr>
+              <tr>
+                <th>Sexo</th>
+                <td>Macho</td>
+              </tr>
+            </table>
 
-        <h2 class="history-title">Historial Clinico</h2>
+            <h2 class="history-title">Historial Clinico</h2>
 
-        <table class="history-table">
-          <thead>
-            <tr>
-              <th>Consultas</th>
-              <th>Fechas</th>
-              <th>Diagnósticos</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>22/10/2025</td>
-              <td>Ligero Problema en oido</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>23/10/2025</td>
-              <td>Aun con ligero problema en oido</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>24/10/2025</td>
-              <td>Infección de oido.</td>
-            </tr>
-          </tbody>
-        </table>
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Consultas</th>
+                  <th>Fechas</th>
+                  <th>Diagnósticos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>22/10/2025</td>
+                  <td>Ligero Problema en oido</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>23/10/2025</td>
+                  <td>Aun con ligero problema en oido</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>24/10/2025</td>
+                  <td>Infección de oido.</td>
+                </tr>
+              </tbody>
+            </table>
 
-        <div class="info-grid">
-          <div>
-            <div class="info-block-header">Dueño Asociado</div>
-            <div class="info-block-content">Jose herrera</div>
-          </div>
-          <div>
-            <div class="info-block-header">Diagnósticos Actual</div>
-            <div class="info-block-content">En recuperación.</div>
-          </div>
+            <div class="info-grid">
+              <div>
+                <div class="info-block-header">Dueño Asociado</div>
+                <div class="info-block-content">Jose herrera</div>
+              </div>
+              <div>
+                <div class="info-block-header">Diagnósticos Actual</div>
+                <div class="info-block-content">En recuperación.</div>
+              </div>
+            </div>
         </div>
 
         <div class="pdf-buttons">
-          <a href="#" class="btn-pdf">Descargar Ficha (PDF)</a>
-          <a href="#" class="btn-pdf">Generar Carnet Veterinario (PDF)</a>
+          <a href="#" id="btn-ficha" class="btn-pdf">Descargar Ficha (PDF)</a>
+          <a href="#" id="btn-carnet" class="btn-pdf">Generar Carnet Veterinario (PDF)</a>
         </div>
       </div>
     </main>
@@ -148,6 +153,38 @@
       if (nombreMascota) {
         document.getElementById("pet-name-display").innerText = nombreMascota;
       }
+
+function generarPDF(nombreArchivo) {
+        const elemento = document.getElementById('contenido-pdf');
+        
+        const opciones = {
+            margin:       10, 
+            filename:     nombreArchivo,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { 
+                scale: 2, 
+                useCORS: true, 
+                scrollY: 0,
+                windowWidth: document.documentElement.offsetWidth 
+            },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] } 
+        };
+
+        html2pdf().set(opciones).from(elemento).save();
+      }
+
+      document.getElementById('btn-ficha').addEventListener('click', (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById("pet-name-display").innerText || "Mascota";
+        generarPDF(`Ficha_${nombre}.pdf`);
+      });
+
+      document.getElementById('btn-carnet').addEventListener('click', (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById("pet-name-display").innerText || "Mascota";
+        generarPDF(`Carnet_${nombre}.pdf`);
+      });
     </script>
   </body>
 </html>

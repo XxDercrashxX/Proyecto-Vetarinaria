@@ -6,6 +6,7 @@
     <title>Detalle de Dueño - VETEICA CLINIC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="../public/css/styles.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -43,63 +44,64 @@
 
         <div class="details-container">
             
-            <h2 class="page-title" style="margin-top: 0;">Detalle de Dueño</h2>
+            <div id="contenido-pdf">
+                <h2 class="page-title" style="margin-top: 0;">Detalle de Dueño</h2>
 
-            <div class="owner-header-section">
+                <div class="owner-header-section">
 
-                <div class="owner-photo-container">
+                    <div class="owner-photo-container">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto del Dueño" class="owner-photo" style="display: block; margin: 0 auto;">
+                    </div>
 
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto del Dueño" class="owner-photo">
+                    <div class="owner-info-data">
+                        <h2 id="owner-name" style="text-align: left; margin: 0;">Jose herrera</h2>
+                        <p id="owner-phone"><strong>612-123-4567</strong></p>
+                        <p id="owner-address">Colonia Púrpura, calle 123</p>
+                    </div>
+
+                    <div class="owner-email-container">
+                        <p id="owner-email">jose@gmail.com</p>
+                    </div>
                 </div>
 
-                <div class="owner-info-data">
-                    <h2 id="owner-name" style="text-align: left; margin: 0;">Jose herrera</h2>
-                    <p id="owner-phone"><strong>612-123-4567</strong></p>
-                    <p id="owner-address">Colonia Púrpura, calle 123</p>
-                </div>
+                <hr class="section-divider">
 
-                <div class="owner-email-container">
-                    <p id="owner-email">jose@gmail.com</p>
-                </div>
+                <h3 class="section-subtitle">Mascotas asociadas:</h3>
+                <table class="details-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Especie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lilo</td>
+                            <td>Perro</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-subtitle" style="margin-top: 3rem;">Historial de citas</h3>
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Consultas</th>
+                            <th>Fechas</th>
+                            <th>Diagnósticos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>22/10/2025</td><td>Ligero Problema en oido.</td></tr>
+                        <tr><td>2</td><td>23/10/2025</td><td>Aun con ligero problema en oido.</td></tr>
+                        <tr><td>3</td><td>24/10/2025</td><td>Infección de oido.</td></tr>
+                    </tbody>
+                </table>
             </div>
 
-            <hr class="section-divider">
-
-            <h3 class="section-subtitle">Mascotas asociadas:</h3>
-            <table class="details-table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Especie</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Lilo</td>
-                        <td>Perro</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3 class="section-subtitle" style="margin-top: 3rem;">Historial de citas</h3>
-            <table class="history-table">
-                <thead>
-                    <tr>
-                        <th>Consultas</th>
-                        <th>Fechas</th>
-                        <th>Diagnósticos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>1</td><td>22/10/2025</td><td>Ligero Problema en oido.</td></tr>
-                    <tr><td>2</td><td>23/10/2025</td><td>Aun con ligero problema en oido.</td></tr>
-                    <tr><td>3</td><td>24/10/2025</td><td>Infección de oido.</td></tr>
-                </tbody>
-            </table>
-
             <div class="pdf-buttons" style="margin-top: 3rem;">
-                <a href="#" class="btn-pdf">Descargar Ficha (PDF)</a>
-                <a href="#" class="btn-pdf">Generar Carnet Veterinario (PDF)</a>
+                <button id="btn-ficha" class="btn-pdf">Descargar Ficha (PDF)</button>
+                <button id="btn-carnet" class="btn-pdf">Generar Carnet Veterinario (PDF)</button>
             </div>
 
         </div>
@@ -121,6 +123,36 @@
         if (!profileCard.contains(e.target)) {
           profileCard.classList.remove("active");
         }
+      });
+
+      function generarPDF(nombreArchivo) {
+        const elemento = document.getElementById('contenido-pdf');
+        const opciones = {
+            margin:       10,
+            filename:     nombreArchivo,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { 
+                scale: 2, 
+                useCORS: true, 
+                scrollY: 0, 
+                windowWidth: document.documentElement.offsetWidth 
+            },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+        };
+        html2pdf().set(opciones).from(elemento).save();
+      }
+
+      document.getElementById('btn-ficha').addEventListener('click', (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById("owner-name").innerText || "Dueño";
+        generarPDF(`Ficha_Dueño_${nombre}.pdf`);
+      });
+
+      document.getElementById('btn-carnet').addEventListener('click', (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById("owner-name").innerText || "Dueño";
+        generarPDF(`Carnet_Dueño_${nombre}.pdf`);
       });
     </script>
     
